@@ -18,7 +18,7 @@ COPY probe/probe.go /src/probe.go
 RUN cd /src && CGO_ENABLED=0 go build -trimpath -ldflags='-s -w' -o /chrome-run run.go \
  && CGO_ENABLED=0 go build -trimpath -ldflags='-s -w' -o /probe probe.go
 
-FROM gcr.io/distroless/cc-debian13:nonroot@sha256:08476c244888bfb425bae1ae4dd7c17f093e972aab8426883d97f3c6f280f7c1
+FROM gcr.io/distroless/cc-debian13:nonroot@sha256:cc66d222f0a7ec996b78a99fe76a969bc80b539a5016ad866c14d1949bc6d0ab
 LABEL org.opencontainers.image.source=https://github.com/TORO-Server/TORO-Images
 # 土台の既定は /home/nonroot (持ち主だけが入れる)。どの uid で動かしてもよいように、作業場所は / にする
 WORKDIR /
