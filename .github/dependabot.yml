@@ -1,0 +1,30 @@
+version: 2
+updates:
+  # 自前以外のイメージ (タグと @sha256: の両方を直す)。自前のイメージはリリースの PR で上げる。
+  # DB (pingcap) は上げ方に手順があるので、自動では上げない
+  - package-ecosystem: docker
+    directories:
+      - /images/caddy
+      - /images/cloudflared
+      - /images/headless-shell
+      - /images/lavalink
+      - /images/pd
+      - /images/tikv
+      - /images/tidb
+    schedule:
+      interval: weekly
+    ignore:
+      - dependency-name: 'pingcap/*'
+    groups:
+      # 土台が変わるだけのものは 1 つの PR にまとめる
+      base-images:
+        patterns:
+          - 'gcr.io/distroless/*'
+          - 'debian'
+          - 'alpine'
+          - 'golang'
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
