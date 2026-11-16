@@ -1,5 +1,5 @@
 # Lavalink。公式の jar を取り出し、jlink で作った Java の実行環境で動かす。
-# 公式のイメージは Java 18 (2022 年に保守が終わった版) なので、保守が続いている Java 21 にする
+# 実行環境は、公式のイメージのものを使わず、下の eclipse-temurin のタグの Java から作り直す
 FROM ghcr.io/lavalink-devs/lavalink:4.2.2-alpine@sha256:96be2be7ee50d35a9bd42c8c7b99e2a4b741f09123066c1ebb9e014dd7db204d AS upstream
 
 # 入れるモジュールは Temurin の JRE と同じ (JDK の開発ツールだけを外す)

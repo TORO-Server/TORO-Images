@@ -1,18 +1,17 @@
 # TORO-Images
 
-TORO Server が使う、サードパーティ製サーバーの最小イメージをビルドするリポジトリです。
-公式の実行ファイルだけを取り出し、シェルやパッケージ管理の道具を持たないイメージにして、GHCR へ公開します。
+TORO Server が使う、他の人が作ったサーバーの最小のイメージ (Docker のイメージ) を作る場所です。
+公式の実行ファイルだけを取り出し、シェルやパッケージ管理の道具を持たないイメージにして、GitHub のイメージ置き場 (GHCR) へ公開します。
 
-対象のイメージの一覧と決まりは [images/README.md](images/README.md) にあります。
+## 役割
 
-## 役割の分担
+- イメージのバージョンは、元の (公式の) イメージのバージョンに合わせます。各 `Dockerfile` の最初の `FROM` のタグが、そのまま GHCR のタグの元になります。
+- このリポジトリが担うのは、作ることと公開することまでです。公開先は `ghcr.io/toro-server/<名前>` です。
+- どのイメージを使うか (識別値の固定) は、使う側の ServerImage-TORO で決めます。このリポジトリでは固定しません。
+- バージョンの更新は、Dependabot が出す変更の提案 (プルリクエスト) で行います。`pingcap` の 3 つだけは手作業です。
 
-- イメージの版の正本は、元の (上流の) イメージの版です。各 `Dockerfile` の最初の `FROM` のタグが、そのまま GHCR のタグの元になります。
-- このリポジトリはビルドと公開までを担います。公開先は GHCR (`ghcr.io/toro-server/<名前>`) で、ビルドと消費の境界は GHCR です。
-- どの digest を使うかの固定は、消費側の ServerImage-TORO で行います (`security/images.txt`、`scripts/pin-images.sh`、`scripts/check-images.py`)。このリポジトリには固定の仕組みを持ちません。
-- 版を上げるのは Dependabot の PR です。pingcap の3イメージだけは手順つきの手作業です (images/README.md を参照)。
+## 詳しい内容
 
-## 公開
-
-- CI (`.github/workflows/images.yml`) が、main への push でビルドと試験 (smoke) を通し、通ったものを GHCR へ置きます。プルリクエストでは置きません。
-- 手元で公開する手順は、消費側の ServerImage-TORO にある `scripts/publish-images.sh` と、その文書に従います。公開は CI に依存せず、CI は利用できる場合に同じ内容を検証として流す位置付けです。
+- 対象のイメージ、決まり、公開の仕組み、TiDB の上げ方: [images/README.md](images/README.md)
+- 公開の自動処理: [.github/workflows/images.yml](.github/workflows/images.yml)
+- 文章の書き方: [WRITING-STYLE.md](https://github.com/TORO-Server/TORO-Website/blob/main/docs/WRITING-STYLE.md)
