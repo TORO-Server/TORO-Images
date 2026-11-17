@@ -2,7 +2,7 @@
 # pd / tikv と同じ版にする。上げ方は images/README.md
 FROM pingcap/tidb:v7.5.8@sha256:e0e06d0ba946966eedfaf704b1cb56cf12767c41e8894592f2a53bc5e1eb28f4 AS upstream
 
-FROM debian:13-slim@sha256:f6b08b09a05725f9431502d3b5714f5c4576e82c1a84fa1debe0c24a7e0c3ec4 AS strip
+FROM debian:13-slim@sha256:a72b4433de1cf7d6bae0c4cee74d0547f58601a643b3375f070c51600d63b6b2 AS strip
 RUN apt-get update && apt-get install -y --no-install-recommends binutils
 COPY --from=upstream /tidb-server /tidb-server
 # デバッグ情報だけを落とす (関数の名前は残すので、スタックトレースは読める)
