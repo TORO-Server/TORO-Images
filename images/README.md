@@ -39,4 +39,4 @@ docker run --rm --network <TiDB の内部ネットワーク> pingcap/pd:<Dockerf
 
 - [自動処理](../.github/workflows/images.yml)が、`main` への反映でイメージを作って動作確認をし、通ったものを GHCR へ置きます。変更の提案の段階では動作確認までで、置きません。
 - 手元で公開する場合は、使う側の ServerImage-TORO にある `scripts/publish-images.sh` を使います。自動処理に頼らずに公開できます。
-- 公開したイメージの識別値 (digest) の固定は、使う側の ServerImage-TORO の `security/images.txt`、`scripts/pin-images.sh`、`scripts/check-images.py` で行います。このリポジトリでは固定しません。
+- 公開したイメージの識別値 (digest) の固定は、使う側の ServerImage-TORO の `security/images.txt`、`scripts/pin-images.sh`、`scripts/check-images.py` で行います。この置き場では固定しません。
