@@ -1,6 +1,6 @@
 # crime-buster が地図を撮るための Chromium (headless-shell)。公式のイメージから、動かすのに要るものだけを取り出す。
 # 秘密も Docker のソケットも持たせない。外へつながらない内部のネットワークだけに置く (サンドボックスが使えないので、閉じ込めはコンテナで行う)
-FROM chromedp/headless-shell:157.0.8103.27@sha256:7bee201478b2f6266aae01243740ee85c16281e32f42d3aed9fdf04f4eace7a1 AS upstream
+FROM chromedp/headless-shell:158.0.8127.2@sha256:84fc19d85ada48c6bfa850cb648f01a9f93153872a9a405ea322d79fcc98ef3a AS upstream
 RUN set -eu; \
     mkdir -p /out/headless-shell; \
     cd /headless-shell; \
