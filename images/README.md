@@ -23,7 +23,7 @@
 `images/pd`、`images/tikv`、`images/tidb` の `FROM` を同じバージョンにして、変更の提案を出します。
 `tidb/smoke.sh` が、本番で使っているバージョンで作ったデータを新しいイメージで開けることを確かめます。本番のバージョンを上げたら、[images.yml](../.github/workflows/images.yml) の `tidb/smoke.sh` に渡している引数も合わせます。
 
-本番での入れ替えは、使う側の ServerImage-TORO の手順で行います。
+本番での入れ替えは、使う側のリポジトリの手順で行います。
 
 ## 道具
 
@@ -38,5 +38,5 @@ docker run --rm --network <TiDB の内部ネットワーク> pingcap/pd:<Dockerf
 公開先は GHCR (`ghcr.io/toro-server/<名前>`) です。
 
 - [自動処理](../.github/workflows/images.yml)が、`main` への反映でイメージを作って動作確認をし、通ったものを GHCR へ置きます。変更の提案の段階では動作確認までで、置きません。
-- 手元で公開する場合は、使う側の ServerImage-TORO にある `scripts/publish-images.sh` を使います。自動処理に頼らずに公開できます。
-- 公開したイメージの識別値 (digest) の固定は、使う側の ServerImage-TORO の `security/images.txt`、`scripts/pin-images.sh`、`scripts/check-images.py` で行います。この置き場では固定しません。
+- 手元で公開する場合は、使う側のリポジトリにある公開用のスクリプトを使います。自動処理に頼らずに公開できます。
+- 公開したイメージの識別値 (digest) の固定は、使う側のリポジトリで行います。この置き場では固定しません。
