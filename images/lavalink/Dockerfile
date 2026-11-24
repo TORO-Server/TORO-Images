@@ -18,7 +18,7 @@ RUN set -eu; \
       | while read -r alias; do keytool -delete -keystore /jre/lib/security/cacerts -storepass changeit -alias "$alias"; done; \
     if keytool -list -keystore /jre/lib/security/cacerts -storepass changeit | grep -iE 'emsign|comodoaaa|aaa ?certificate'; then exit 1; fi
 
-FROM alpine:3.24.3@sha256:be2656061b536c1883c4034790e21d0a09c5aaaf51968b89368a3c0371ea2c9a
+FROM alpine:3.24.4@sha256:f59abe656b692d901e184be3445e084786602108599d2a51d229c0f5a48c71bf
 LABEL org.opencontainers.image.source=https://github.com/TORO-Server/TORO-Images
 # libgcc: Lavalink の音声のライブラリが使う
 RUN apk add --no-cache libgcc && install -d -o 65532 -g 65532 /opt/Lavalink

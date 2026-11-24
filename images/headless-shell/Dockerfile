@@ -12,7 +12,7 @@ RUN set -eu; \
     done; \
     cp -a --parents etc/fonts usr/share/fonts /out/
 
-FROM golang:1.27-alpine@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb AS build
+FROM golang:1.27-alpine@sha256:70bd7ddea8b6cbe5d6943cde279d6b67feb10cc924fb9100d1d8757c1575b280 AS build
 COPY headless-shell/run.go /src/run.go
 COPY probe/probe.go /src/probe.go
 RUN cd /src && CGO_ENABLED=0 go build -trimpath -ldflags='-s -w' -o /chrome-run run.go \
