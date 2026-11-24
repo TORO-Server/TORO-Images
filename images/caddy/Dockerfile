@@ -5,7 +5,7 @@ FROM golang:1.27-alpine@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac
 COPY probe/probe.go /src/probe.go
 RUN CGO_ENABLED=0 go build -trimpath -ldflags='-s -w' -o /probe /src/probe.go
 
-FROM gcr.io/distroless/static-debian13:nonroot@sha256:25ac8f0c3b2334a9eb05452266bd4697864a8c8ef0ef71e5e6480d7f92868329
+FROM gcr.io/distroless/static-debian13:nonroot@sha256:8ce6dd87e9823c5b48dcfb2c8604714ccb351ce59607327bcc4957448da279b5
 LABEL org.opencontainers.image.source=https://github.com/TORO-Server/TORO-Images
 # 土台の既定は /home/nonroot (持ち主だけが入れる)。どの uid で動かしてもよいように、作業場所は / にする
 WORKDIR /
