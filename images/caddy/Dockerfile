@@ -1,5 +1,5 @@
 # torosaba.net (apex) の転送と静的ファイルの Caddy。公式の実行ファイルだけを、シェルの無いイメージに載せる
-FROM caddy:2.11.9-alpine@sha256:0bbb055bda6793c999bde78b1b5ce3e89f829fb031af2cf50056ea1246559fee AS upstream
+FROM caddy:2.11.9-alpine@sha256:003a97808e781aa9f7e75cc2f43d34d461099031faf5e20faefb9f61126836f0 AS upstream
 
 FROM golang:1.27-alpine@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb AS probe
 COPY probe/probe.go /src/probe.go
