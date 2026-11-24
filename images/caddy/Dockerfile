@@ -1,7 +1,7 @@
 # torosaba.net (apex) の転送と静的ファイルの Caddy。公式の実行ファイルだけを、シェルの無いイメージに載せる
 FROM caddy:2.11.9-alpine@sha256:0bbb055bda6793c999bde78b1b5ce3e89f829fb031af2cf50056ea1246559fee AS upstream
 
-FROM golang:1.27-alpine@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb AS probe
+FROM golang:1.27-alpine@sha256:70bd7ddea8b6cbe5d6943cde279d6b67feb10cc924fb9100d1d8757c1575b280 AS probe
 COPY probe/probe.go /src/probe.go
 RUN CGO_ENABLED=0 go build -trimpath -ldflags='-s -w' -o /probe /src/probe.go
 
