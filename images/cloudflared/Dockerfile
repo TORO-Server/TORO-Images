@@ -1,5 +1,5 @@
 # Cloudflare Tunnel。公式の実行ファイル (静的リンク) だけを、シェルの無いイメージに載せる
-FROM cloudflare/cloudflared:2026.10.7@sha256:4955524aeaa379e154023d5a027c250f7b35041a2e7e950cf13f144bc9b9c5ba AS upstream
+FROM cloudflare/cloudflared:2026.11.1@sha256:e613aadbc2d9511785d2e67a86b0c8ac18dd63a3f9af0d06faf04cbfdcb35f2d AS upstream
 
 FROM golang:1.27-alpine@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb AS probe
 COPY probe/probe.go /src/probe.go
